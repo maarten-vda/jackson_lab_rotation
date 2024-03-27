@@ -1,4 +1,8 @@
+### This script is used to convert a list of FASTA sequences to a pairwise ensemble of interactions
+
 import sys
+
+# Parse input variables
 
 if len(sys.argv) != 3:
     print("Usage: {} <input_fasta_file> <output_fasta_file>".format(sys.argv[0]))
