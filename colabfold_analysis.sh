@@ -1,3 +1,5 @@
+### Bash script for executing colabfold_analysis.py with batch submission
+
 #!/bin/bash
 #$ -N analyse_results       # {JOB_NAME}
 #$ -V                 # environmental variables retain their values
