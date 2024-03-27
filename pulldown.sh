@@ -1,5 +1,8 @@
 #!/bin/bash
 
+### THIS SCRIPT GENERATES THE MULTI-SEQUENCE FASTA FILE FROM THE FASTA FOR A TARGET AND A MULTI-LINE FASTA OF INTERACTORS
+
+# This function processes the names of interactions
 process_first_line_seq() {
     local input_variable="$1"
 
@@ -20,6 +23,7 @@ process_first_line_seq() {
     echo "$input_variable"
 }
 
+# Error handling
 if [ "$#" -ne 3 ]; then
     echo "Usage: $0 <single_sequence.fasta> <multi_line.fasta> <output.fasta>"
     exit 1
@@ -37,6 +41,8 @@ echo "${second_line_seq}:${second_line_seq}" >> $3
 counter=0
 
 # Iterate through the lines of the multi-line fasta file
+# Just adds the combinations of sequences and line IDs to file
+# Uses a counter to track if it is an ID line or a sequence line
 while IFS= read -r line; do
     ((counter++))
     
