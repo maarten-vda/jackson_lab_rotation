@@ -1,7 +1,12 @@
+### UTILITY SCRIPT, NOT PART OF PIPELINE.SH, USED TO CONVERT A LIST OF UNIPROT IDS TO A LIST OF THE PROTEIN NAMES
+### ONLY WORKS IF THEY ARE THE PRIMARY ACCESSION NUMBERS
+
 import argparse
 from Bio import ExPASy
 from Bio import SwissProt
 
+
+#Function to get a protein names from list of uniprot IDs via ExPASy and SwissProt APIs
 def get_protein_names(uniprot_ids_file):
     protein_names = []
 
