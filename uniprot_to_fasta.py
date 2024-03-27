@@ -1,7 +1,10 @@
+### SCRIPT TO CONVERT A LIST OF UNIPROT IDS TO THE CORRESPONDING FASTA SEQUENCES VIA REQUESTING URL ON UNIPROT
+
 import argparse
 import os
 import requests
 
+# Get protein sequences from the accession number just using URL requests
 def get_protein_sequence(accession):
     url = f"https://www.uniprot.org/uniprot/{accession}.fasta"
     response = requests.get(url)
@@ -23,7 +26,7 @@ def main():
     with open(args.input, "r") as input_file:
         accession_list = [line.strip() for line in input_file]
 
-    # Concatenate protein sequences
+    # Concatenate protein sequences (allows processing as list)
     concatenated_sequence = ""
     for accession in accession_list:
         protein_sequence = get_protein_sequence(accession)
