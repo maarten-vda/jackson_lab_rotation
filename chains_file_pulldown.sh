@@ -1,5 +1,9 @@
+### This script is for making the "chains" file in pulldown mode, only use for analysing complexes using multimer_colabfold_analysis.py
+
 #!/bin/bash
 
+
+# Function for processing names for interactions 
 process_first_line_seq() {
     local input_variable="$1"
 
@@ -8,7 +12,7 @@ process_first_line_seq() {
         input_variable="${input_variable:1}"
     fi
 
-    # Check if the variable contains "|"
+    # Check if the variable contains "|", this is assuming its a UniProt ID
     if [[ $input_variable == *"|"* ]]; then
         # Split the string at "|"
         IFS='|' read -ra fields <<< "$input_variable"
