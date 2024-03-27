@@ -1,5 +1,7 @@
 #!/bin/bash
 
+### THIS SCRIPT COMBINES ALL ASPECTS OF THE ANALYSIS PIPELINE, GOING FROM UNIPROT IDS OR GO ANNOTATIONS TO A RANKED LIST OF POTENTIAL INTERACTORS
+
 ##Eddie qsub flags
 #$ -N protein_interactors_set       # {JOB_NAME}
 #$ -V                 # environmental variables retain their values
@@ -280,4 +282,5 @@ cd ${output_folder}
 python ${scripts_dict}/colabfold_analysis.py ${output_folder}/colabfold_predictions
 python ${scripts_dict}/combine_metrics.py colabfold_predictions_analysis/interfaces.csv ${output_folder}/colabfold_predictions combined_metrics.csv
 bash ${scripts_dict}/improved_update_summary.sh ${output_folder}
+# Here is where the script to graph the interactions (graph_interactions.py) should go
 cd $scripts_dict
