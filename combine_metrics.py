@@ -1,8 +1,11 @@
+### This script combines interfaces.csv (produced by colabfold_analysis.py) with pTM and ipTM scores for each model
+
 import argparse
 import os
 import pandas as pd
 import json
 
+# Function to extract scores from a JSON containing AlphaFold certainty metrics for a particular model model
 def extract_scores(file_path, input_directory):
     # Read the JSON file
     file_path = os.path.join(input_directory, file_path)
@@ -18,7 +21,7 @@ def extract_scores(file_path, input_directory):
     except Exception as e:
         return(f"Error reading the JSON file: {e}")
 
-
+# Function to get all JSON files in a directory
 def get_score_files(directory_path):
     # Get a list of all files in the directory
     all_files = os.listdir(directory_path)
