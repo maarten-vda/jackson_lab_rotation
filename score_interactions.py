@@ -1,6 +1,11 @@
+### THIS SCRIPT IS DERELICT, NOT USED IN THE MOST UP TO DATE VERSION OF THE PIPELINE SINCE IT IS HARD CODED FOR RANKING CONFIDENCE AND NOT OTHER METRICS
+### TO FIX I SHOULD MAKE A NEW GRAPH_INTERACTIONS.PY TAKING THE UPDATED SUMMARY
+
 import argparse
 import pandas as pd
 
+# This function calculates the average metrics across models for an interaction
+# Needed because of the non-commutativity of interactions (A(B) != B(A))
 def calculate_average(input_path):
     # Read the input CSV into a Pandas DataFrame
     input_data = pd.read_csv(input_path)
