@@ -1,4 +1,5 @@
 #!/bin/bash
+### The file goa_human.gaf is found at https://current.geneontology.org/annotations/goa_human.gaf.gz ###
 
 # Check if the required arguments are provided
 if [ "$#" -ne 2 ]; then
