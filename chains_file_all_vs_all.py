@@ -1,5 +1,7 @@
 import sys
 
+# Parse command line options
+
 if len(sys.argv) != 3:
     print("Usage: {} <input_fasta_file> <output_fasta_file>".format(sys.argv[0]))
     sys.exit(1)
@@ -17,7 +19,7 @@ except FileNotFoundError:
 ids_and_seqs = {}
 
 # Read the input FASTA file
-# Iterates through each line in the file and stores the identifier and sequence in a dictionary with fasta as the value
+# Iterates through each line in the file and store the identifier and sequence in a dictionary with fasta as the value
 for line in lines:
     if line.startswith(">"):
         if "|" in line:
