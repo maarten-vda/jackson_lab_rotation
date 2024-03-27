@@ -1,5 +1,7 @@
 #!/bin/bash
 
+### This script adds additional metrics to summary.csv
+
 export PATH="/exports/applications/gridengine/ge-8.6.5/bin/lx-amd64:/exports/applications/apps/SL7/modules/5.2.0/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/s2037423/.local/bin:/home/s2037423/bin"
 source /etc/profile.d/modules.sh
 module load igmm/apps/openssl/3.0.5
@@ -16,6 +18,7 @@ fi
 output_dir="$PWD/$1"
 exec_dict="$PWD"
 
+#Following DRSASA installation was done according to instructions on https://github.com/nioroso-x3/dr_sasa_n
 dr_sasa="/exports/igmm/eddie/ajackson-wrkgrp/maarten/software/drsasa2/build/dr_sasa"
 
 mkdir $output_dir/drsasa
@@ -24,6 +27,9 @@ mkdir $output_dir/drsasa
 head -n 1 "$output_dir/colabfold_predictions_analysis/summary.csv" | sed 's/$/,pTM,ipTM,ranking_confidence,interface_area,total_surface_area,affinity,kd25/' > "$output_dir/updated_summary.csv"
 
 # Iterate through the rows of summary.csv (excluding the header)
+# In this loop pTM, ipTM, and ranking confidence are all extracted from the combined metrics file
+# Then interface and total SASA are calculated for the corresponding protein model
+# Then binding affinity and dissociation constant at 25 degrees C are calculated
 tail -n +2 "$output_dir/colabfold_predictions_analysis/summary.csv" | while IFS=, read -r complex_name avg_n_models max_n_models num_contacts_with_max_n_models num_unique_contacts best_model_num best_pdockq best_plddt_avg best_pae_avg; do
     # Find the corresponding row in combined_metrics.csv
     result=$(awk -F, -v complex_name="$complex_name" -v best_model_num="$best_model_num" 'BEGIN {OFS=",";} \
