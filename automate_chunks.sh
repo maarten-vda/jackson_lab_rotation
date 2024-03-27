@@ -1,4 +1,6 @@
 #!/bin/bash
+### This script is for generating the interactors dataset when batch submission is not available
+### Essentially just executes colabfold over a series of input chunks made with the UNIX split command
 #$ -N error_pipeline_handling       # {JOB_NAME}
 #$ -V                 # environmental variables retain their values
 #$ -R y               # reserve nodes as they become available
