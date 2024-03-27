@@ -1,3 +1,6 @@
+### THIS IS THE MODIFIED SCRIPT THAT CAN HANDLE COMPLEXES, REQUIRES 1 ADDITIONAL INPUT FILE IN THE SAME DIRECTORY AS THE COLABFOLD PREDICTIONS CONTAINING INFORMATION ON WHICH CHAINS
+### MODIFICATIONS TO get_contacts_from_structure, get_contacts, and analyze_complexes were made
+
 #!/usr/bin/python3
 
 from argparse import ArgumentParser
@@ -316,6 +319,9 @@ def get_contacts_from_structure(pdb_filename:str, chain_numbers, max_distance:fl
 
     #loop through all the protein chains to find contacts between chains
     #strategy is to first look for residues in general proximity by just looking at the distance between their amide nitrogen
+    ### THIS IS WHERE MAIN MODIFICATIONS HAPPEN, JUST BY MODIFYING THE RANGE OF CHAIN NUMBERS ITERATED OVER
+    ### ASSUMES THAT PROTEIN B SEQUENCES COME AFTER PROTEIN A WHEN FOLDED WHICH ALWAYS HAPPENS IF NOT WORKING WITH HOMOOLIGOMERS AS PART OF COMPLEX
+    ### SO THIS DOESNT WORK IF THERE ARE MULTIPLE OF THE SAME SUBUNIT
 
     for i in range(0, chain_num_A):
         chain_1_coords = N_coords[i]
