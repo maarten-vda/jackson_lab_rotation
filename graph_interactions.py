@@ -1,3 +1,7 @@
+### This script graphs the predicted interactions based on certainty metrics
+### THIS SCRIPT IS NOT UP TO DATE WITH CHANGES IN PIPELINE.SH
+### To use this script, score_interactions.py must be run to generate interactors and non_interactors input files
+
 import argparse
 import pandas as pd
 import networkx as nx
@@ -36,6 +40,7 @@ def get_unique_nodes(df1, df2):
         unique_nodes[i] = get_protein_name(unique_nodes[i])
     return unique_nodes, df1_interactions, df2_interactions
 
+# Function to get continuous hex colors for blue to red across purple from values between 0.7 and 1.0
 def generate_hex_color(value):
     # Ensure the input value is within the specified range and normalize it
     normalized_value = max(0.0, min(1.0, (value - 0.7) / 0.3))
@@ -50,6 +55,7 @@ def generate_hex_color(value):
     
     return hex_color
 
+# Function to get protein names from a UniProt ID (ONLY WORKS WITH PRIMARY ACCESSION NUMBER)
 def get_protein_name(uniprot_id):
     try:
         url = f'https://www.uniprot.org/uniprot/{uniprot_id}.txt'
@@ -70,6 +76,7 @@ def get_protein_name(uniprot_id):
         print(f"Error fetching data for UniProt ID {uniprot_id}: {str(e)}")
         return None
 
+#Function to generate the graph of interactions
 def generate_graph(unique_nodes, df1_interactions, output_path):
     G = nx.Graph()
 
