@@ -1,3 +1,6 @@
+### This script is for making the "chains" file in all_vs_all mode 
+### Only used when doing analysis of complexes (with multimer_colabfold_analysis.py)
+
 import sys
 
 # Parse command line options
