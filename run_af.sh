@@ -1,4 +1,7 @@
 #!/bin/bash
+
+### BASH SCRIPT FOR EXECUTING COLABFOLD BATCH ON EDDIE
+
 #$ -N error_pipeline_handling       # {JOB_NAME}
 #$ -V                 # environmental variables retain their values
 #$ -R y               # reserve nodes as they become available
